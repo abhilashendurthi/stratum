@@ -145,6 +145,10 @@ stratum_cc_library(
     name = "bf_sde_wrapper",
     srcs = ["bf_sde_wrapper.cc"],
     hdrs = ["bf_sde_wrapper.h"],
+    defines = select({
+        "//stratum/hal/lib/pi:sde_9_4_0": ["SDE_9_4_0"],
+        "//conditions:default": [],
+    }),
     deps = [
         ":bf_sde_interface",
         ":bfrt_constants",
